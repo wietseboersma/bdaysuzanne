@@ -24,12 +24,11 @@ def birthday_greeting():
     for zin in zinnen:
         for char in zin:  
             random_color = random.choice(kleuren)
-            output += random_color + char + reset_kleur
+            output += '<span style="color: {};">{}</span>'.format(random_color.split('[')[-1].split('m')[0], char)
             time.sleep(0.1)  
-        output += "\n"
+        output += "<br>"
     
-    return '<pre>' + output + '</pre>'
+    return output
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8080)))
-
